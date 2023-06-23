@@ -1,0 +1,45 @@
+.titulo {
+    background-color: #00638d;
+    color: #ffff;
+    text-align: center;
+    height: 100px;
+    padding: 20px;
+    align-items: center;
+    font-family: Verdana, sans-serif;
+}
+
+.titulo h1 {
+    font-weight: bold;
+}
+
+.barra {
+    text-align: center;
+    height: 80px;
+    background-color: #636363;
+}
+
+.barra .boton-home img {
+    height: 50px;
+    width: 50px;
+    text-decoration: none;
+}
+
+.barra .btn {
+    font-family:tahoma, monospace;
+    font-size: 30px;
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.barra .btn:hover {
+    background-color: grey;
+    color: white;
+    transition: 0.2s;
+}
+
+.tabla h2 {
+   text-align: center;
+}
