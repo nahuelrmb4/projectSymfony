@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    FIST
+{% endblock %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="titulo">
+        <h1>Sistema de gestión académica IS</h1>
+    </div>
+
+    <div class="barra">
+        <a class="boton-home" href={{path('app_homepage')}}><img src="{{asset('media/casita.png')}}"> </a>
+        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Institutos</a>
+        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Preinscripción</a>
+        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Acceso a la plataforma</a>
+    </div>
+    <h1>OfertaEducativa index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ciclo</th>
+                <th>Vacantes</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for oferta_educativa in oferta_educativas %}
+            <tr>
+                <td>{{ oferta_educativa.id }}</td>
+                <td>{{ oferta_educativa.ciclo }}</td>
+                <td>{{ oferta_educativa.vacantes }}</td>
+                <td>
+                    <a href="{{ path('app_oferta_educativa_show', {'id': oferta_educativa.id}) }}">show</a>
+                    <a href="{{ path('app_oferta_educativa_edit', {'id': oferta_educativa.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_oferta_educativa_new') }}">Create new</a>
+{% endblock %}

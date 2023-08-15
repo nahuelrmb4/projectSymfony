@@ -43,11 +43,19 @@ class Instituto
     #[ORM\OneToMany(mappedBy: 'instituto', targetEntity: Telefono::class)]
     private Collection $telefonos;
 
+    #[ORM\ManyToMany(targetEntity: Carrera::class, mappedBy: 'institutos')]
+    private Collection $carreras;
+
+    #[ORM\OneToMany(mappedBy: 'instituto', targetEntity: OfertaEducativa::class)]
+    private Collection $ofertaEducativas;
+
 
     public function __construct()
     {
         $this->telefonos = new ArrayCollection();
         $this->sedes = new ArrayCollection();
+        $this->carreras = new ArrayCollection();
+        $this->ofertaEducativas = new ArrayCollection();
     }
 
 
@@ -198,6 +206,63 @@ class Instituto
             // set the owning side to null (unless already changed)
             if ($telefono->getInstituto() === $this) {
                 $telefono->setInstituto(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Carrera>
+     */
+    public function getCarreras(): Collection
+    {
+        return $this->carreras;
+    }
+
+    public function addCarrera(Carrera $carrera): self
+    {
+        if (!$this->carreras->contains($carrera)) {
+            $this->carreras->add($carrera);
+            $carrera->addInstituto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarrera(Carrera $carrera): self
+    {
+        if ($this->carreras->removeElement($carrera)) {
+            $carrera->removeInstituto($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OfertaEducativa>
+     */
+    public function getOfertaEducativas(): Collection
+    {
+        return $this->ofertaEducativas;
+    }
+
+    public function addOfertaEducativa(OfertaEducativa $ofertaEducativa): self
+    {
+        if (!$this->ofertaEducativas->contains($ofertaEducativa)) {
+            $this->ofertaEducativas->add($ofertaEducativa);
+            $ofertaEducativa->setInstituto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOfertaEducativa(OfertaEducativa $ofertaEducativa): self
+    {
+        if ($this->ofertaEducativas->removeElement($ofertaEducativa)) {
+            // set the owning side to null (unless already changed)
+            if ($ofertaEducativa->getInstituto() === $this) {
+                $ofertaEducativa->setInstituto(null);
             }
         }
 

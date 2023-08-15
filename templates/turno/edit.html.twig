@@ -17,16 +17,16 @@
     </div>
 
     <div class="barra">
-        <a class="boton-home" href={{path('app_homepage')}}> <img src="{{asset('media/casita.png')}}"> </a>
+        <a class="boton-home" href={{path('app_homepage')}}><img src="{{asset('media/casita.png')}}"> </a>
         <a class="btn btn-lg" href={{path('app_instituto_index')}}>Institutos</a>
         <a class="btn btn-lg" href={{path('app_instituto_index')}}>Preinscripción</a>
         <a class="btn btn-lg" href={{path('app_instituto_index')}}>Acceso a la plataforma</a>
     </div>
+    <h1>Edit Turno</h1>
 
-    <div class="contenido">
-    </div>
+    {{ include('turno/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('instituto/_form.html.twig') }}
+    <a href="{{ path('app_turno_index') }}">back to list</a>
 
-    <a href="{{ path('app_instituto_index') }}">back to list</a>
+    {{ include('turno/_delete_form.html.twig') }}
 {% endblock %}

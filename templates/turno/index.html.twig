@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    FIST
+{% endblock %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css"/>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="titulo">
+        <h1>Sistema de gestión académica IS</h1>
+    </div>
+
+    <div class="barra">
+        <a class="boton-home" href={{path('app_homepage')}}><img src="{{asset('media/casita.png')}}"> </a>
+        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Institutos</a>
+        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Preinscripción</a>
+        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Acceso a la plataforma</a>
+    </div>
+    <h1>Turno index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Horario</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for turno in turnos %}
+            <tr>
+                <td>{{ turno.id }}</td>
+                <td>{{ turno.horario }}</td>
+                <td>
+                    <a href="{{ path('app_turno_show', {'id': turno.id}) }}">show</a>
+                    <a href="{{ path('app_turno_edit', {'id': turno.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_turno_new') }}">Create new</a>
+{% endblock %}
