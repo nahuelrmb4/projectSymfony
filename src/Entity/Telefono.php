@@ -65,6 +65,6 @@ class Telefono
     }
 
     public function __toString() {
-        return $this->detalle;
+        return ($this->detalle . " " . $this->numero);
     }
 }

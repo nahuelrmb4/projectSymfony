@@ -30,14 +30,12 @@
                 <tr>
                     {#<th>Id</th>#}
                     <th>Nombre</th>
-                    <th>Localidad</th>
                     <th>Dirección</th>
-                    <th>Teléfono</th>
+                    <th>Localidad</th>
                     <th>Mail</th>
+                    <th>Teléfonos</th>
                     <th>Url_campus</th>
                     <th>Url_instituto</th>
-                    <th>Sedes</th>
-                    <th>Teléfonos</th>
                     {#<th>actions</th>#}
                 </tr>
             </thead>
@@ -45,15 +43,13 @@
             {% for instituto in institutos %}
                 <tr>
                     {#<td>{{ instituto.id }}</td>#}
-                    <td><a>{{ instituto.nombre }}</a></td>
-                    <td>{{ instituto.localidad }}</td>
+                    <td><a href="{{ path('app_instituto_show', {'id': instituto.id}) }}">{{ instituto.nombre }}</a></td>
                     <td>{{ instituto.direccion }}</td>
-                    <td>{{ instituto.telefono }}</td>
+                    <td>{{ instituto.localidad }}</td>
                     <td>{{ instituto.mail }}</td>
+                    <td>{{ instituto.telefonos | join('<br/>') | raw }}</td>
                     <td>{{ instituto.urlCampus }}</td>
                     <td>{{ instituto.urlInstituto }}</td>
-                    <td>{{ instituto.sedes| join('<br/>') | raw }}</td>
-                    <td>{{ instituto.telefonos| join('<br/>') | raw }}</td>
                     {#<td>
                         <a href="{{ path('app_instituto_show', {'id': instituto.id}) }}">show</a>
                         <a href="{{ path('app_instituto_edit', {'id': instituto.id}) }}">edit</a>

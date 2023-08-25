@@ -20,44 +20,38 @@
         <a class="btn btn-lg" href={{path('app_instituto_index')}}>Preinscripción</a>
         <a class="btn btn-lg" href={{path('app_instituto_index')}}>Acceso a la plataforma</a>
     </div>
-    <h1>Instituto</h1>
+
+    <h1>Carreras del instituto {{ instituto.nombre }}</h1>
 
     <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ instituto.id }}</td>
-            </tr>
+        <thead>
             <tr>
                 <th>Nombre</th>
-                <td>{{ instituto.nombre }}</td>
+                <th>Duracion</th>
+                <th>Turno</th>
+                <th>Resolucion</th>
             </tr>
+        </thead>
+        <tbody>
+        {% for carrera in instituto.carreras %}
             <tr>
-                <th>Direccion</th>
-                <td>{{ instituto.direccion }}</td>
+                <td>{{ carrera.nombre }}</td>
+                <td>{{ carrera.duracion }}</td>
+                <td>{{ carrera.turnos | join('<br/>') | raw }}</td>
+                <td>{{ carrera.resolucion }}</td>
+                {#<td>
+                    <a href="{{ path('app_carrera_show', {'id': carrera.id}) }}">show</a>
+                    <a href="{{ path('app_carrera_edit', {'id': carrera.id}) }}">edit</a>
+                </td>#}
             </tr>
+        {% else %}
             <tr>
-                <th>Telefono</th>
-                <td>{{ instituto.telefono }}</td>
+                <td colspan="7">no records found</td>
             </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ instituto.mail }}</td>
-            </tr>
-            <tr>
-                <th>Url_campus</th>
-                <td>{{ instituto.urlCampus }}</td>
-            </tr>
-            <tr>
-                <th>Url_instituto</th>
-                <td>{{ instituto.urlInstituto }}</td>
-            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('app_instituto_index') }}">back to list</a>
 
-    <a href="{{ path('app_instituto_edit', {'id': instituto.id}) }}">edit</a>
-
-    {{ include('instituto/_delete_form.html.twig') }}
 {% endblock %}

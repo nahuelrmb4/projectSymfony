@@ -13,7 +13,6 @@ class TurnoType extends AbstractType
     {
         $builder
             ->add('horario')
-            ->add('carreras')
         ;
     }
 

@@ -28,6 +28,7 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Duracion</th>
+                <th>Turno</th>
                 <th>Cant_asignaturas</th>
                 <th>Modo</th>
                 <th>Resolucion</th>
@@ -40,6 +41,7 @@
                 <td>{{ carrera.id }}</td>
                 <td>{{ carrera.nombre }}</td>
                 <td>{{ carrera.duracion }}</td>
+                <td>{{ carrera.turnos | join('<br/>') | raw }}</td>
                 <td>{{ carrera.cantAsignaturas }}</td>
                 <td>{{ carrera.modo }}</td>
                 <td>{{ carrera.resolucion }}</td>

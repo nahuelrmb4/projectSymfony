@@ -19,7 +19,6 @@ class CarreraType extends AbstractType
             ->add('resolucion')
             ->add('turnos')
             ->add('institutos')
-            ->add('ofertaEducativas')
         ;
     }
 
