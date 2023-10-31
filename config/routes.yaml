@@ -1,3 +1,13 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+app_institutos:
+    path: /institutos/{order}
+    controller: App\Controller\InstitutoController::index
+app_carreras:
+    path: /carreras
+    controller: App\Controller\CarreraController::index
+app_preinscripcion:
+    path: /preinscripcion
+    controller: App\Controller\PreinscripcionController::index
+    

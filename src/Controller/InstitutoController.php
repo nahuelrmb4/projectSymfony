@@ -11,12 +11,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/instituto')]
+
+
 class InstitutoController extends AbstractController
 {
     #[Route('/', name: 'app_instituto_index', methods: ['GET'])]
     public function index(InstitutoRepository $institutoRepository): Response
     {
-        return $this->render('instituto/index.html.twig', [
+        return $this->render('instituto/botoneraCrud.html.twig', [
             'institutos' => $institutoRepository->findAll(),
         ]);
     }
@@ -75,4 +77,18 @@ class InstitutoController extends AbstractController
 
         return $this->redirectToRoute('app_instituto_index', [], Response::HTTP_SEE_OTHER);
     }
+    #[Route('/search', name: 'searchCarrera', methods: ['POST'])]
+public function search(Request $request, InstitutoRepository $institutoRepository): Response
+{
+    $keyword = $request->request->get('keyword');
+    $results = [];
+
+    if ($keyword) {
+        $results = $institutoRepository->findBy(['nombre' => $keyword]);
+    }
+
+    return $this->render('instituto/search.html.twig', [
+        'results' => $results,
+    ]);
+}
 }
