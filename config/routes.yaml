@@ -2,8 +2,11 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 app_institutos:
-    path: /institutos/{order}
+    path: /institutos/
     controller: App\Controller\InstitutoController::index
+app_search:
+    path: /institutos/search
+    controller: App\Controller\SearchController::search
 app_carreras:
     path: /carreras
     controller: App\Controller\CarreraController::index

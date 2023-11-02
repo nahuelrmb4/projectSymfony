@@ -77,18 +77,21 @@ class InstitutoController extends AbstractController
 
         return $this->redirectToRoute('app_instituto_index', [], Response::HTTP_SEE_OTHER);
     }
-    #[Route('/search', name: 'searchCarrera', methods: ['POST'])]
-public function search(Request $request, InstitutoRepository $institutoRepository): Response
-{
-    $keyword = $request->request->get('keyword');
-    $results = [];
+   
+   
+//     #[Route('/search', name: 'searchCarrera', methods: ['POST'])]
+// public function search(Request $request, InstitutoRepository $institutoRepository): Response
+// {
+//     $keyword = $request->request->get('keyword');
+//     console.log($keyword);
+//     $results = [];
+//     console.log($results);
+//     if ($keyword) {
+//         $results = $institutoRepository->findBy(['nombre' => $keyword]);
+//     }
 
-    if ($keyword) {
-        $results = $institutoRepository->findBy(['nombre' => $keyword]);
-    }
-
-    return $this->render('instituto/search.html.twig', [
-        'results' => $results,
-    ]);
-}
+//     return $this->render('instituto/search.html.twig', [
+//         'results' => $results,
+//     ]);
+// }
 }
