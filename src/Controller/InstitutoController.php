@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class InstitutoController extends AbstractController
 {
-    #[Route('/', name: 'app_instituto_index', methods: ['GET'])]
+    #[Route('/', name: 'navbarInstituto', methods: ['GET'])]
     public function index(InstitutoRepository $institutoRepository): Response
     {
         return $this->render('instituto/botoneraCrud.html.twig', [
