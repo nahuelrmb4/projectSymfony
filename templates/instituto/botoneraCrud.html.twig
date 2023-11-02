@@ -15,7 +15,6 @@
    <div class="titulo">
  <h1>Sistema de gestión académica IS</h1>
     </div>
-    
      <div class="barra">
         <a class="boton-home" href={{path('app_homepage')}} > <img src="{{asset('media/casita.png')}}"> </a>
         <a class="btn btn-lg" href={{path('app_institutos')}} >Institutos</a>
@@ -24,9 +23,9 @@
     </div>
 
 
-<center> <button class="btn btn-primary mt-3" type="submit" >Crear instituto</button></center>
-<center> <button class="btn btn-secondary mt-3" type="submit" >Editar instituto</button></center>
-<center> <button class="btn btn-danger mt-3" type="submit">Eliminar Instituto</button></center>
+<center> <a href={{path('app_instituto_new')}}><button class="btn btn-primary mt-3" type="submit" >Crear instituto</button></center></a>
+<center> <button class="btn btn-secondary mt-3" type="submit" >Editar instituto</button></center> 
+<center> <button class="btn btn-danger mt-3" type="submit">Eliminar Instituto</button></center> 
 <center> <a href={{path('app_search')}}><button class="btn btn-success mt-3" type="submit">Buscar Instituto</button></center></a>
 
 {% endblock %}

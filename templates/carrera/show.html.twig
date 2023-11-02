@@ -16,9 +16,10 @@
  <h1>Sistema de gestión académica IS</h1>
     </div>
 
-    <div class="barra">
+      <div class="barra">
         <a class="boton-home" href={{path('app_homepage')}} > <img src="{{asset('media/casita.png')}}"> </a>
         <a class="btn btn-lg" href={{path('app_institutos')}} >Institutos</a>
+         <a class="btn btn-lg" href={{path('app_carreras')}} >Carreras</a>
         <a class="btn btn-lg" href={{path('app_preinsc')}} >Preinscripción</a>
         <a class="btn btn-lg" href={{path('app_plataforma')}} >Acceso a la plataforma</a>
     </div>
@@ -53,9 +54,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_carrera_index') }}">back to list</a>
 
-    <a href="{{ path('app_carrera_edit', {'id': carrera.id}) }}">edit</a>
 
     {{ include('carrera/_delete_form.html.twig') }}
+    <a href="{{ path('app_carrera_index') }}"> <button class = "btn btn-secondary md-5 mt-2" >Volver</button></a>
+    <a href="{{ path('app_carrera_edit', {'id': carrera.id}) }}"><button class = "btn btn-warning md-5 mt-2 ml2" >Editar</button></a>
+
+    
 {% endblock %}
