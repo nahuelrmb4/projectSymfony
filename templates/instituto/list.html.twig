@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    FIST
+    Listado de institutos
 {% endblock %}
 
 {% block stylesheets %}
@@ -12,15 +12,15 @@
 
 {% block body %}
 
-    <div class="titulo">
-        <h1>Sistema de gestión académica IS</h1>
+<div class="titulo">
+ <h1>Sistema de gestión académica IS</h1>
     </div>
-
-    <div class="barra">
-         <a class="boton-home" href={{path('app_homepage')}} > <img src="{{asset('media/casita.png')}}"> </a>
-        <a class="btn btn-lg" >Institutos</a>
-        <a class="btn btn-lg" >Preinscripción</a>
-        <a class="btn btn-lg" >Acceso a la plataforma</a>
+       <div class="barra">
+        <a class="boton-home" href={{path('app_homepage')}} > <img src="{{asset('media/casita.png')}}"> </a>
+        <a class="btn btn-lg" href={{path('app_institutos')}} >Institutos</a>
+         <a class="btn btn-lg" href={{path('app_carreras')}} >Carreras</a>
+        <a class="btn btn-lg" href={{path('app_preinsc')}} >Preinscripción</a>
+        <a class="btn btn-lg" href={{path('app_plataforma')}} >Acceso a la plataforma</a>
     </div>
 
 
@@ -64,6 +64,6 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_instituto_new') }}">Create new</a>
+<a href="{{ path('app_instituto_new') }}"><button class="btn btn-primary ml-5" type="submit"  >Crear nuevo</button></a>
+    
 {% endblock %}

@@ -12,52 +12,62 @@
 
 {% block body %}
 
-    <div class="titulo">
-        <h1>Sistema de gestión académica IS</h1>
+  <div class="titulo">
+ <h1>Sistema de gestión académica IS</h1>
     </div>
-
-    <div class="barra">
-        <a class="boton-home" href={{path('app_homepage')}}><img src="{{asset('media/casita.png')}}"> </a>
-        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Institutos</a>
-        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Preinscripción</a>
-        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Acceso a la plataforma</a>
+      <div class="barra">
+        <a class="boton-home" href={{path('app_homepage')}} > <img src="{{asset('media/casita.png')}}"> </a>
+        <a class="btn btn-lg" href={{path('app_institutos')}} >Institutos</a>
+         <a class="btn btn-lg" href={{path('app_carreras')}} >Carreras</a>
+        <a class="btn btn-lg" href={{path('app_preinsc')}} >Preinscripción</a>
+        <a class="btn btn-lg" href={{path('app_plataforma')}} >Acceso a la plataforma</a>
     </div>
+ <div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Duracion</th>
+                        <th>Turno</th>
+                        <th>Cantidad de asignaturas</th>
+                        <th>Modo</th>
+                        <th>Resolucion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for carrera in carreras %}
+                    <tr>
+                        <td>{{ carrera.id }}</td>
+                        <td>{{ carrera.nombre }}</td>
+                        <td>{{ carrera.duracion }}</td>
+                        <td>{{ carrera.turnos | join('<br/>') | raw }}</td>
+                        <td>{{ carrera.cantAsignaturas }}</td>
+                        <td>{{ carrera.modo }}</td>
+                        <td>{{ carrera.resolucion }}</td>
+                        <td>
+                            <a href="{{ path('app_carrera_show', {'id': carrera.id}) }}">
+                                <button class="btn btn-success" type="button">Ver</button>
+                            </a>
+                            <a href="{{ path('app_carrera_edit', {'id': carrera.id}) }}">
+                                <button class="btn btn-warning" type="button">Editar</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">No se encontraron registros</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Duracion</th>
-                <th>Turno</th>
-                <th>Cant_asignaturas</th>
-                <th>Modo</th>
-                <th>Resolucion</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for carrera in carreras %}
-            <tr>
-                <td>{{ carrera.id }}</td>
-                <td>{{ carrera.nombre }}</td>
-                <td>{{ carrera.duracion }}</td>
-                <td>{{ carrera.turnos | join('<br/>') | raw }}</td>
-                <td>{{ carrera.cantAsignaturas }}</td>
-                <td>{{ carrera.modo }}</td>
-                <td>{{ carrera.resolucion }}</td>
-                <td>
-                    <a href="{{ path('app_carrera_show', {'id': carrera.id}) }}">show</a>
-                    <a href="{{ path('app_carrera_edit', {'id': carrera.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_carrera_new') }}">Create new</a>
+    <center><a href="{{ path('app_carrera_new') }}"><button class="btn btn-primary mt-3" type="submit" >Crear Carrera</button></center></a>
 {% endblock %}

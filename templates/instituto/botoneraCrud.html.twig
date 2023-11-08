@@ -12,58 +12,20 @@
 
 {% block body %}
 
-    <div class="titulo">
-        <h1>Sistema de gestión académica IS</h1>
+   <div class="titulo">
+ <h1>Sistema de gestión académica IS</h1>
+    </div>
+     <div class="barra">
+        <a class="boton-home" href={{path('app_homepage')}} > <img src="{{asset('media/casita.png')}}"> </a>
+        <a class="btn btn-lg" href={{path('app_institutos')}} >Institutos</a>
+        <a class="btn btn-lg" href={{path('app_preinsc')}} >Preinscripción</a>
+        <a class="btn btn-lg" href={{path('app_plataforma')}} >Acceso a la plataforma</a>
     </div>
 
-    <div class="barra">
-        <a class="boton-home" href={{path('app_homepage')}}><img src="{{asset('media/casita.png')}}"> </a>
-        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Institutos</a>
-        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Preinscripción</a>
-        <a class="btn btn-lg" href={{path('app_instituto_index')}}>Acceso a la plataforma</a>
-    </div>
 
+<center> <a href={{path('app_instituto_new')}}><button class="btn btn-primary mt-3" type="submit" >Crear instituto</button></center></a>
+<center> <button class="btn btn-secondary mt-3" type="submit" >Editar instituto</button></center> 
+<center> <button class="btn btn-danger mt-3" type="submit">Eliminar Instituto</button></center> 
+<center> <a href={{path('app_search')}}><button class="btn btn-success mt-3" type="submit">Buscar Instituto</button></center></a>
 
-    <div class="tabla">
-        <h2>Lista de institutos</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    {#<th>Id</th>#}
-                    <th>Nombre</th>
-                    <th>Dirección</th>
-                    <th>Localidad</th>
-                    <th>Mail</th>
-                    <th>Teléfonos</th>
-                    <th>Url_campus</th>
-                    <th>Url_instituto</th>
-                    {#<th>actions</th>#}
-                </tr>
-            </thead>
-            <tbody>
-            {% for instituto in institutos %}
-                <tr>
-                    {#<td>{{ instituto.id }}</td>#}
-                    <td><a href="{{ path('app_instituto_show', {'id': instituto.id}) }}">{{ instituto.nombre }}</a></td>
-                    <td>{{ instituto.direccion }}</td>
-                    <td>{{ instituto.localidad }}</td>
-                    <td>{{ instituto.mail }}</td>
-                    <td>{{ instituto.telefonos | join('<br/>') | raw }}</td>
-                    <td>{{ instituto.urlCampus }}</td>
-                    <td>{{ instituto.urlInstituto }}</td>
-                    {#<td>
-                        <a href="{{ path('app_instituto_show', {'id': instituto.id}) }}">show</a>
-                        <a href="{{ path('app_instituto_edit', {'id': instituto.id}) }}">edit</a>
-                    </td>#}
-                </tr>
-    </div>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_instituto_new') }}">Create new</a>
 {% endblock %}
